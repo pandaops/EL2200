@@ -20,6 +20,6 @@ B = 4'd1;  A=2'd0;
 #10;
 end
 always @(A or B)
-$display("%d Data=%b Select=%b Output=%b",$time, B,A,out);
+#5 $display("%d Data=%b Select=%b Output=%b",$time, B,A,out);
 endmodule
 

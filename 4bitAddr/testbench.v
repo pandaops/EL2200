@@ -21,6 +21,6 @@ A = 4'd0; B = 4'd0; Cin=0;
 #10;
 end
 always @(A or B)
-$display("%d A=%b B=%b S=%b",$time, A,B,S);
+#5 $display("%d A=%b B=%b S=%b",$time, A,B,S);
 endmodule
 
