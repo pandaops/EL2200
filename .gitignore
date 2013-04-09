@@ -2,10 +2,13 @@
 *.slo
 *.lo
 *.o
+*.out
 
 # Compiled Dynamic libraries
 *.so
 *.dylib
+*.v~
+*.vcd
 
 # Compiled Static libraries
 *.lai
