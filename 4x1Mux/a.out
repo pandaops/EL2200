@@ -1,0 +1,106 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision - 10;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8b217d0 .scope module, "test" "test" 2 3;
+ .timescale -9 -10;
+v0x8b5d328_0 .var "A", 1 0;
+v0x8b5d490_0 .var "B", 3 0;
+v0x8b5d4e0_0 .net "out", 0 0, L_0x8b5e178; 1 drivers
+E_0x8b44e20 .event edge, v0x8b5d0e0_0, v0x8b5d3d8_0;
+S_0x8b43888 .scope module, "DUT" "mux" 2 7, 3 1, S_0x8b217d0;
+ .timescale -9 -10;
+L_0x8b42228 .functor NOT 1, L_0x8b5d618, C4<0>, C4<0>, C4<0>;
+L_0x8b5d760 .functor NOT 1, L_0x8b5d7d0, C4<0>, C4<0>, C4<0>;
+L_0x8b5d858 .functor AND 1, L_0x8b5d8c8, L_0x8b5d950, L_0x8b5da40, C4<1>;
+L_0x8b5dac8 .functor AND 1, L_0x8b5db40, L_0x8b5dc30, L_0x8b5dc80, C4<1>;
+L_0x8b5dd08 .functor AND 1, L_0x8b5dd40, L_0x8b5ddc8, L_0x8b5de88, C4<1>;
+L_0x8b5da90 .functor AND 1, L_0x8b5dfd0, L_0x8b5e058, L_0x8b5e0a8, C4<1>;
+L_0x8b5e178 .functor OR 1, L_0x8b5d858, L_0x8b5dac8, L_0x8b5dd08, L_0x8b5da90;
+v0x8b43908_0 .net *"_s0", 0 0, L_0x8b42228; 1 drivers
+v0x8b41d98_0 .net *"_s11", 0 0, L_0x8b5d950; 1 drivers
+v0x8b41df8_0 .net *"_s13", 0 0, L_0x8b5da40; 1 drivers
+v0x8b41e58_0 .net *"_s15", 0 0, L_0x8b5db40; 1 drivers
+v0x8b41ec0_0 .net *"_s17", 0 0, L_0x8b5dc30; 1 drivers
+v0x8b41f20_0 .net *"_s19", 0 0, L_0x8b5dc80; 1 drivers
+v0x8b41fa0_0 .net *"_s21", 0 0, L_0x8b5dd40; 1 drivers
+v0x8b42000_0 .net *"_s23", 0 0, L_0x8b5ddc8; 1 drivers
+v0x8b42088_0 .net *"_s25", 0 0, L_0x8b5de88; 1 drivers
+v0x8b420e8_0 .net *"_s27", 0 0, L_0x8b5dfd0; 1 drivers
+v0x8b42178_0 .net *"_s29", 0 0, L_0x8b5e058; 1 drivers
+v0x8b421d8_0 .net *"_s3", 0 0, L_0x8b5d618; 1 drivers
+v0x8b42270_0 .net *"_s31", 0 0, L_0x8b5e0a8; 1 drivers
+v0x8b422d0_0 .net *"_s4", 0 0, L_0x8b5d760; 1 drivers
+v0x8b5cff8_0 .net *"_s7", 0 0, L_0x8b5d7d0; 1 drivers
+v0x8b5d048_0 .net *"_s9", 0 0, L_0x8b5d8c8; 1 drivers
+v0x8b5d0e0_0 .net "d", 3 0, v0x8b5d490_0; 1 drivers
+RS_0x8b4514c .resolv tri, L_0x8b5d550, L_0x8b5d6d8, C4<zz>, C4<zz>;
+v0x8b5d140_0 .net8 "nselect", 1 0, RS_0x8b4514c; 2 drivers
+v0x8b5d1e0_0 .alias "q", 0 0, v0x8b5d4e0_0;
+v0x8b5d230_0 .net "q1", 0 0, L_0x8b5d858; 1 drivers
+v0x8b5d190_0 .net "q2", 0 0, L_0x8b5dac8; 1 drivers
+v0x8b5d2d8_0 .net "q3", 0 0, L_0x8b5dd08; 1 drivers
+v0x8b5d388_0 .net "q4", 0 0, L_0x8b5da90; 1 drivers
+v0x8b5d3d8_0 .net "select", 1 0, v0x8b5d328_0; 1 drivers
+L_0x8b5d550 .part/pv L_0x8b42228, 0, 1, 2;
+L_0x8b5d618 .part v0x8b5d328_0, 0, 1;
+L_0x8b5d6d8 .part/pv L_0x8b5d760, 1, 1, 2;
+L_0x8b5d7d0 .part v0x8b5d328_0, 1, 1;
+L_0x8b5d8c8 .part RS_0x8b4514c, 0, 1;
+L_0x8b5d950 .part RS_0x8b4514c, 1, 1;
+L_0x8b5da40 .part v0x8b5d490_0, 0, 1;
+L_0x8b5db40 .part v0x8b5d328_0, 0, 1;
+L_0x8b5dc30 .part RS_0x8b4514c, 1, 1;
+L_0x8b5dc80 .part v0x8b5d490_0, 1, 1;
+L_0x8b5dd40 .part RS_0x8b4514c, 0, 1;
+L_0x8b5ddc8 .part v0x8b5d328_0, 1, 1;
+L_0x8b5de88 .part v0x8b5d490_0, 2, 1;
+L_0x8b5dfd0 .part v0x8b5d328_0, 0, 1;
+L_0x8b5e058 .part v0x8b5d328_0, 1, 1;
+L_0x8b5e0a8 .part v0x8b5d490_0, 3, 1;
+    .scope S_0x8b217d0;
+T_0 ;
+    %vpi_call 2 10 "$dumpfile", "mux_data.vcd";
+    %vpi_call 2 11 "$dumpvars", 1'sb0, S_0x8b43888;
+    %end;
+    .thread T_0;
+    .scope S_0x8b217d0;
+T_1 ;
+    %movi 8, 1, 4;
+    %set/v v0x8b5d490_0, 8, 4;
+    %set/v v0x8b5d328_0, 0, 2;
+    %delay 100, 0;
+    %movi 8, 2, 4;
+    %set/v v0x8b5d490_0, 8, 4;
+    %movi 8, 1, 2;
+    %set/v v0x8b5d328_0, 8, 2;
+    %delay 100, 0;
+    %movi 8, 5, 4;
+    %set/v v0x8b5d490_0, 8, 4;
+    %movi 8, 2, 2;
+    %set/v v0x8b5d328_0, 8, 2;
+    %delay 100, 0;
+    %movi 8, 7, 4;
+    %set/v v0x8b5d490_0, 8, 4;
+    %set/v v0x8b5d328_0, 1, 2;
+    %delay 100, 0;
+    %movi 8, 8, 4;
+    %set/v v0x8b5d490_0, 8, 4;
+    %set/v v0x8b5d328_0, 1, 2;
+    %delay 100, 0;
+    %end;
+    .thread T_1;
+    .scope S_0x8b217d0;
+T_2 ;
+    %wait E_0x8b44e20;
+    %vpi_call 2 23 "$display", "%d Data=%b Select=%b Output=%b", $time, v0x8b5d490_0, v0x8b5d328_0, v0x8b5d4e0_0;
+    %jmp T_2;
+    .thread T_2, $push;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.v";
+    "gate_model.v";

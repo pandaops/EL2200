@@ -1,0 +1,71 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.5 " "(v0_9_5)";
+:vpi_time_precision - 10;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8e546c0 .scope module, "test" "test" 2 3;
+ .timescale -9 -10;
+v0x8e50e28_0 .var "A", 1 0;
+v0x8e50ea8_0 .var "B", 3 0;
+v0x8e50f18_0 .net "out", 0 0, v0x8e50d68_0; 1 drivers
+S_0x8e30720 .scope module, "DUT" "mux" 2 7, 3 1, S_0x8e546c0;
+ .timescale -9 -10;
+v0x8e307a0_0 .net "d", 3 0, v0x8e50ea8_0; 1 drivers
+v0x8e50d68_0 .var "q", 0 0;
+v0x8e50dc8_0 .net "select", 1 0, v0x8e50e28_0; 1 drivers
+E_0x8e54a30 .event edge, v0x8e50dc8_0, v0x8e307a0_0;
+    .scope S_0x8e30720;
+T_0 ;
+    %wait E_0x8e54a30;
+    %ix/getv 1, v0x8e50dc8_0;
+    %jmp/1 T_0.0, 4;
+    %load/x1p 8, v0x8e307a0_0, 1;
+    %jmp T_0.1;
+T_0.0 ;
+    %mov 8, 2, 1;
+T_0.1 ;
+; Save base=8 wid=1 in lookaside.
+    %set/v v0x8e50d68_0, 8, 1;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_0x8e546c0;
+T_1 ;
+    %vpi_call 2 10 "$dumpfile", "mux_data.vcd";
+    %vpi_call 2 11 "$dumpvars", 1'sb0, S_0x8e30720;
+    %end;
+    .thread T_1;
+    .scope S_0x8e546c0;
+T_2 ;
+    %movi 8, 9, 4;
+    %set/v v0x8e50ea8_0, 8, 4;
+    %set/v v0x8e50e28_0, 0, 2;
+    %delay 100, 0;
+    %movi 8, 9, 4;
+    %set/v v0x8e50ea8_0, 8, 4;
+    %movi 8, 1, 2;
+    %set/v v0x8e50e28_0, 8, 2;
+    %delay 100, 0;
+    %movi 8, 9, 4;
+    %set/v v0x8e50ea8_0, 8, 4;
+    %movi 8, 2, 2;
+    %set/v v0x8e50e28_0, 8, 2;
+    %delay 100, 0;
+    %movi 8, 9, 4;
+    %set/v v0x8e50ea8_0, 8, 4;
+    %set/v v0x8e50e28_0, 1, 2;
+    %delay 100, 0;
+    %end;
+    .thread T_2;
+    .scope S_0x8e546c0;
+T_3 ;
+    %wait E_0x8e54a30;
+    %vpi_call 2 23 "$display", "%d Data=%b Select=%b Output=%b", $time, v0x8e50ea8_0, v0x8e50e28_0, v0x8e50f18_0;
+    %jmp T_3;
+    .thread T_3, $push;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.v";
+    "be_model.v";
